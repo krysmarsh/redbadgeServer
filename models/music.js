@@ -1,5 +1,7 @@
-module.exports = (sequelize, DataTypes) => {
-    const Music = sequelize.define("music", {
+const { DataTypes } = require("sequelize");
+const db = require("../db");
+
+    const Music = db.define("music", {
       artist: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -26,5 +28,4 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
     });
-    return Music;
-  };
+   module.exports = Music;

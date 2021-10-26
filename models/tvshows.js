@@ -1,5 +1,7 @@
-module.exports = (sequelize, DataTypes) => {
-    const Tvshows = sequelize.define("tvshows", {
+const { DataTypes } = require("sequelize");
+const db = require("../db");
+
+    const Tvshows = db.define("tvshows", {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -26,6 +28,5 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: true,
       },
     });
-    return Tvshows;
-  };
-  
+    
+    module.exports = Tvshows;

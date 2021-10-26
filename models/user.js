@@ -11,6 +11,18 @@ const User = db.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  email: {
+    type: DataTypes.STRING(50),
+    allowNull: false,
+    unique: true,
+  },
+  roles: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    
+  }
+
+  
 });
 
 module.exports = User;
