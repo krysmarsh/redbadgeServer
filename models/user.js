@@ -18,7 +18,7 @@ const User = db.define("user", {
   },
   roles: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
     
   }
 
