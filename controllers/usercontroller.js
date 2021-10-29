@@ -35,12 +35,12 @@ router.post("/signup", function  (req, res) {
   router.post("/login", function (req, res) {
     User.findOne({
       where: {
-        firstName: req.body.firstName,
+        username: req.body.user.username,
       },
     })
       .then(function loginSuccess(user) {
         if (user) {
-          bcrypt.compare(req.body.passwordhash, user.passwordhash, function (
+          bcrypt.compare(req.body.user.passwordhash, user.passwordhash, function (
             err,
             matches
           ) {
