@@ -39,12 +39,12 @@ router.get("/get", validateSession, function
 router.put('/:tvshowsId', validateSession, (req, res) => {
   let tvshowsId = req.params.tvshowsId;
   const updateTvshows = {
-    name: req.body.name,
-    genre: req.body.genre,
-    length: req.body.length,
-    platform: req.body.platform,
-    isPublic: req.body.isPublic,
-    photoURL: req.body.photoURL,
+    name: req.body.tvshows.name,
+    genre: req.body.tvshows.genre,
+    length: req.body.tvshows.length,
+    platform: req.body.tvshows.platform,
+    isPublic: req.body.tvshows.isPublic,
+    photoURL: req.body.tvshows.photoURL,
     userId: req.user.id,
   };
   const query = { where: { id: tvshowsId, userId: req.user.id } };

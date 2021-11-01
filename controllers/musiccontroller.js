@@ -40,12 +40,12 @@ router.get("/get", validateSession, function
 router.put('/:musicId', validateSession, (req, res) => {
   let musicId = req.params.musicId;
   const updateMusic = {
-    artist: req.body.artist,
-    genre: req.body.genre,
-    songs: req.body.songs,
-    album: req.body.album,
-    isPublic: req.body.isPublic,
-    photoURL: req.body.photoURL,
+    artist: req.body.music.artist,
+    genre: req.body.music.genre,
+    songs: req.body.music.songs,
+    album: req.body.music.album,
+    isPublic: req.body.music.isPublic,
+    photoURL: req.body.music.photoURL,
     userId: req.user.id,
   };
   const query = { where: { id: musicId, userId: req.user.id } };

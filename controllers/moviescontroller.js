@@ -40,21 +40,19 @@ router.get("/get", validateSession, function
 router.put('/:moviesId', validateSession, (req, res) => {
   let moviesId = req.params.moviesId;
   const updateMovies = {
-    title: req.body.title,
-    genre: req.body.genre,
-    rating: req.body.rating,
-    platform: req.body.platform,
-    review: req.body.review,
-    isPublic: req.body.isPublic,
-    photoURL: req.body.photoURL,
+    title: req.body.movies.title,
+    genre: req.body.movies.genre,
+    rating: req.body.movies.rating,
+    platform: req.body.movies.platform,
+    review: req.body.movies.review,
+    isPublic: req.body.movies.isPublic,
+    photoURL: req.body.movies.photoURL,
     userId: req.user.id,
   };
   const query = { where: { id: moviesId, userId: req.user.id } };
   console.log(query);
   Movies.update(updateMovies, query)
-      .then((movies) =>
-          res
-              .status(200)
+      .then((movies) => res.status(200)
               .json({ movies, message: 'Movie successfully updated' })
       )
       .catch((err) =>
