@@ -12,6 +12,7 @@ router.post("/test", function (req, res) {
 router.post("/create", validateSession, function (req, res) {
   console.log(req.user.id);
   const tvshowsCheckout = {
+    category: req.body.tvshows.category,
     name: req.body.tvshows.name,
     genre: req.body.tvshows.genre,
     length: req.body.tvshows.length,
@@ -41,6 +42,7 @@ router.get("/get", validateSession, function
 router.put('/:tvshowsId', validateSession, (req, res) => {
   let tvshowsId = req.params.tvshowsId;
   const updateTvshows = {
+    category: req.body.tvshows.category,
     name: req.body.tvshows.name,
     genre: req.body.tvshows.genre,
     length: req.body.tvshows.length,
@@ -63,6 +65,27 @@ router.put('/:tvshowsId', validateSession, (req, res) => {
               .json({ error: err, message: 'Error: TV Show not updated' })
       );
 });
+
+// get all publicly available tv shows
+router.get('/', (req, res) => {
+  Tvshows.findAll({
+      where: { isPublic: true },
+     // order: sequelize.random(),
+      limit: 100
+  })
+      .then((tvshows) => res.status(200).json(tvshows))
+      .catch((err) =>
+          res.status(500).json({
+              error: err,
+              message: 'Error: No tv shows found',
+          })
+      );
+});
+
+
+
+
+
 
 //delete tv shows
 router.delete('/:tvshowsId', validateSession, (req, res) => {

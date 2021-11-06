@@ -12,6 +12,7 @@ router.post("/test", function (req, res) {
 router.post("/create", validateSession, function (req, res) {
   console.log(req.user.id);
   const moviesCheckout = {
+    category: req.body.movies.category,
     title: req.body.movies.title,
     genre: req.body.movies.genre,
     rating: req.body.movies.rating,
@@ -42,6 +43,7 @@ router.get("/get", validateSession, function
 router.put('/:moviesId', validateSession, (req, res) => {
   let moviesId = req.params.moviesId;
   const updateMovies = {
+    category: req.body.movies.category,
     title: req.body.movies.title,
     genre: req.body.movies.genre,
     rating: req.body.movies.rating,
@@ -78,6 +80,25 @@ router.delete('/:moviesId', validateSession, (req, res) => {
               .json({ error: err, message: 'Error: Movie not deleted' })
       );
 });
+
+// get all publicly available movies
+router.get('/', (req, res) => {
+  Movies.findAll({
+      where: { isPublic: true },
+     // order: sequelize.random(),
+      limit: 100
+  })
+      .then((movies) => res.status(200).json(movies))
+      .catch((err) =>
+          res.status(500).json({
+              error: err,
+              message: 'Error: No movies found',
+          })
+      );
+});
+
+
+
 //upload photo
 
 router.get("/photo/cloudsign", validateSession, async (req, res) => {
