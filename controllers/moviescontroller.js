@@ -1,7 +1,9 @@
 let router = require("express").Router();
 const { Movies } = require("../models");
 const validateSession = require("../middleware/validate-session");
+const optionalValidateSession = require('../middleware/optional-validate-session');
 //create get request in moviescontroller - include user information as well
+const cloudinary = require("cloudinary").v2;
 
 router.post("/test", function (req, res) {
   res.send("It worked");
@@ -76,5 +78,24 @@ router.delete('/:moviesId', validateSession, (req, res) => {
               .json({ error: err, message: 'Error: Movie not deleted' })
       );
 });
+//upload photo
+
+router.get("/photo/cloudsign", validateSession, async (req, res) => {
+  try {
+    const timestamp = Math.floor(new Date().getTime() / 1000).toString();
+    const signature = cloudinary.utils.api_sign_request(
+      { timestamp: timestamp, upload_preset: "iheartent_movies_pic" },
+      process.env.CLOUDINARY_SECRET
+    );
+
+    res.status(200).json({ signature, timestamp });
+  } catch (err) {
+    res.status(500).json({
+      message: "failed to sign",
+    });
+  }
+});
+
+
 
 module.exports = router;

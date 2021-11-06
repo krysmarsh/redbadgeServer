@@ -1,8 +1,9 @@
 let router = require("express").Router();
 const { Music } = require("../models");
 const validateSession = require("../middleware/validate-session");
+const optionalValidateSession = require('../middleware/optional-validate-session');
 //create get request in musiccontroller - include user information as well
-
+const cloudinary = require("cloudinary").v2;
 router.post("/test", function (req, res) {
   res.send("It worked");
 });
@@ -78,7 +79,23 @@ router.delete('/:musicId', validateSession, (req, res) => {
       );
 });
 
+//upload photo
 
+router.get("/photo/cloudsign", validateSession, async (req, res) => {
+  try {
+    const timestamp = Math.floor(new Date().getTime() / 1000).toString();
+    const signature = cloudinary.utils.api_sign_request(
+      { timestamp: timestamp, upload_preset: "iheartent_music_pic" },
+      process.env.CLOUDINARY_SECRET
+    );
+
+    res.status(200).json({ signature, timestamp });
+  } catch (err) {
+    res.status(500).json({
+      message: "failed to sign",
+    });
+  }
+});
 
 
 

@@ -1,6 +1,8 @@
 let router = require("express").Router();
 const { Tvshows } = require("../models");
 const validateSession = require("../middleware/validate-session");
+const optionalValidateSession = require('../middleware/optional-validate-session');
+const cloudinary = require("cloudinary").v2;
 //create get request in musiccontroller - include user information as well
 
 router.post("/test", function (req, res) {
@@ -76,4 +78,23 @@ router.delete('/:tvshowsId', validateSession, (req, res) => {
               .json({ error: err, message: 'Error: TV Show not deleted' })
       );
 });
+
+//upload photo
+
+router.get("/photo/cloudsign", validateSession, async (req, res) => {
+  try {
+    const timestamp = Math.floor(new Date().getTime() / 1000).toString();
+    const signature = cloudinary.utils.api_sign_request(
+      { timestamp: timestamp, upload_preset: "iheartent_tvshows_pic" },
+      process.env.CLOUDINARY_SECRET
+    );
+
+    res.status(200).json({ signature, timestamp });
+  } catch (err) {
+    res.status(500).json({
+      message: "failed to sign",
+    });
+  }
+});
+
 module.exports = router;
