@@ -2,6 +2,10 @@ const { DataTypes } = require("sequelize");
 const db = require("../db");
 
     const Music = db.define("music", {
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       artist: {
         type: DataTypes.STRING,
         allowNull: false,
