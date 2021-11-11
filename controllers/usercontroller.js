@@ -14,7 +14,7 @@ router.post("/signup", function  (req, res) {
     User.create({
       email: req.body.user.email,
       username: req.body.user.username,
-      passwordhash: bcrypt.hashSync(req.body.user.password, 13),
+      passwordhash: bcrypt.hashSync(req.body.user.passwordhash, 13),
       roles: req.body.user.roles,
     })
       .then(function createSuccess(user) {
@@ -38,9 +38,10 @@ router.post("/signup", function  (req, res) {
         username: req.body.user.username,
       },
     })
+     // .then(function loginSuccess(user) {
       .then(function loginSuccess(user) {
         if (user) {
-          bcrypt.compare(req.body.user.password, user.password, function (
+          bcrypt.compare(req.body.user.passwordhash, user.passwordhash, function (
             err,
             matches
           ) {
