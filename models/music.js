@@ -23,9 +23,9 @@ const db = require("../db");
         allowNull: false,
       },
       isPublic: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
+        type: DataTypes.STRING,
+        allowNull: true,
+        
       },
       photoURL: {
         type: DataTypes.STRING,
