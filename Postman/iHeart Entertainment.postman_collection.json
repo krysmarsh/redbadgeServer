@@ -1,0 +1,477 @@
+{
+	"info": {
+		"_postman_id": "5ec71d22-b8df-4ee7-b4c0-b0059b8c98d4",
+		"name": "iHeart Entertainment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "http://localhost:3000/user/signup",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							},
+							{
+								"key": "Access-Control-Request-Headers",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n    {\"user\":\n    {\n    \"email\": \"project@test.com\",\n    \"username\": \"project2\",\n    \"passwordhash\": \"project2\"\n    \n    }\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/signup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/user/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInVzZXJuYW1lIjoicHJvamVjdDIiLCJpYXQiOjE2MzcxMDk4ODksImV4cCI6MTYzNzE5NjI4OX0.R6ib35L7bQx5S87ZL2dOgjn6TNucv3G0g-g_JU5TI-4",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"user\":\n    {\n    \"username\": \"project2\",\n    \"passwordhash\": \"project2\"\n    \n    }\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Music",
+			"item": [
+				{
+					"name": "http://localhost:3000/music/create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInVzZXJuYW1lIjoicHJvamVjdDIiLCJpYXQiOjE2MzcxMDk4ODksImV4cCI6MTYzNzE5NjI4OX0.R6ib35L7bQx5S87ZL2dOgjn6TNucv3G0g-g_JU5TI-4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"music\":\n    {\n   \n    \"artist\": \"mariah carey\",\n    \"genre\": \"pop\",\n    \"songs\": \"butterfly\",\n    \"album\": \"butterfly\",\n    \"isPublic\": false,\n    \"photoURL\": \"null\",\n     \"category\":\"music\"\n\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/music/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"music",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/music/",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywidXNlcm5hbWUiOiJ0ZXN0MyIsImlhdCI6MTYzNjIyNTc1OSwiZXhwIjoxNjM2MzEyMTU5fQ.YlEK_OTejbVcNFzNQPhoi8ENIg8K-VrxXMzvSndcX5A",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"music\":\n    {\n    \"artist\": \"prince\",\n    \"genre\": \"pop\",\n    \"songs\": \"when doves cry\",\n    \"album\": \"Purple Rain\",\n    \"isPublic\": true,\n    \"photoURL\": \"null\"\n\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/music/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"music",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/music/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0MiIsImlhdCI6MTYzNTQ2MTI4NiwiZXhwIjoxNjM1NTQ3Njg2fQ.136_uCS2QAfpn3P1oQSqNqSRipDzqLLKzKgCN3n4InI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/music/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"music",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/music/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/music/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"music",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Movies",
+			"item": [
+				{
+					"name": "http://localhost:3000/movies/create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInVzZXJuYW1lIjoicHJvamVjdDIiLCJpYXQiOjE2MzcxMDk4ODksImV4cCI6MTYzNzE5NjI4OX0.R6ib35L7bQx5S87ZL2dOgjn6TNucv3G0g-g_JU5TI-4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"movies\":\n    {\n    \"category\": \"movies\",\n    \"title\": \"friday\",\n    \"genre\": \"comedy\",\n    \"rating\": \"R\",\n    \"platform\": \"Netflix\",\n    \"review\": \"Funny!\",\n    \"isPublic\": true,\n    \"photoURL\": \"null\"\n\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:3000/movies/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/movies/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/movies/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0MiIsImlhdCI6MTYzNTQ2MTI4NiwiZXhwIjoxNjM1NTQ3Njg2fQ.136_uCS2QAfpn3P1oQSqNqSRipDzqLLKzKgCN3n4InI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/movies/",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTYzNTczNTk1MywiZXhwIjoxNjM1ODIyMzUzfQ.t4X0mqLW_gEyA1_fXNaZZfWxnFvs-ZtZsO2LCPRRVSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"movies\":\n    {\n    \"title\": \"friday after next\",\n    \"genre\": \"comedy\",\n    \"rating\": \"PG\",\n    \"platform\": \"Netflix\",\n    \"review\": \"Great movie!\",\n    \"isPublic\": true,\n    \"photoURL\": \"null\"\n\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/movies/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"movies",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "TV Shows",
+			"item": [
+				{
+					"name": "http://localhost:3000/tvshows/create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MTEiLCJpYXQiOjE2MzY4NDM5MDIsImV4cCI6MTYzNjkzMDMwMn0.9dVSqwCXqkhL2wSEwYO9bDh4FslPFTESYKWUkLce6WM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tvshows\":\n    {\n    \"category\": \"tvshows\",\n    \"name\": \"a million little things\",\n    \"genre\": \"drama\",\n    \"length\": \"60\",\n    \"platform\": \"ABC\",\n    \"isPublic\": true,\n    \"photoURL\": \"null\"\n\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tvshows/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tvshows",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/tvshows/",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJ0ZXN0MSIsImlhdCI6MTYzNTczNTk1MywiZXhwIjoxNjM1ODIyMzUzfQ.t4X0mqLW_gEyA1_fXNaZZfWxnFvs-ZtZsO2LCPRRVSs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"tvshows\":\n    {\n    \"name\": \"2test anatomy\",\n    \"genre\": \"drama\",\n    \"length\": \"60\",\n    \"platform\": \"ABC\",\n    \"isPublic\": true,\n    \"photoURL\": \"null\"\n\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/tvshows/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tvshows",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/tvshows/",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJ0ZXN0MiIsImlhdCI6MTYzNTQ2MTI4NiwiZXhwIjoxNjM1NTQ3Njg2fQ.136_uCS2QAfpn3P1oQSqNqSRipDzqLLKzKgCN3n4InI",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/tvshows/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tvshows",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:3000/tvshows/",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/tvshows/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"tvshows",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
